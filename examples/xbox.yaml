@@ -1,0 +1,13 @@
+devices:
+- input_name: Pro Controller
+  output_name: Pro Controller
+  remappings:
+    BTN_EAST:
+      - BTN_SOUTH
+    BTN_SOUTH:
+      - BTN_EAST
+    BTN_C:
+      - BTN_NORTH
+    BTN_NORTH:
+      - BTN_C
+    

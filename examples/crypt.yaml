@@ -1,0 +1,53 @@
+devices:
+- input_name: Pro Controller
+  output_name: test-pro
+  remappings:
+    BTN_EAST:
+      - KEY_RIGHT
+    BTN_NORTH:
+      - KEY_UP
+    BTN_C:
+      - KEY_LEFT
+    BTN_SOUTH:
+      - KEY_DOWN
+    BTN_TR2:
+      - KEY_ESC
+    BTN_MODE:
+      - KEY_ENTER
+    BTN_TL2:
+      - KEY_ENTER
+    ABS_HAT0Y:
+      - code: KEY_DOWN
+        type: EV_KEY
+        input_value: 1
+        value: 1
+      - code: KEY_UP
+        type: EV_KEY
+        input_value: -1
+        value: 1
+      - code: KEY_DOWN
+        type: EV_KEY
+        input_value: 0
+        value: 0
+      - code: KEY_UP
+        type: EV_KEY
+        input_value: 0
+        value: 0
+    ABS_HAT0X:
+      - code: KEY_RIGHT
+        type: EV_KEY
+        input_value: 1
+        value: 1
+      - code: KEY_LEFT
+        type: EV_KEY
+        input_value: -1
+        value: 1
+      - code: KEY_RIGHT
+        type: EV_KEY
+        input_value: 0
+        value: 0
+      - code: KEY_LEFT
+        type: EV_KEY
+        input_value: 0
+        value: 0
+    

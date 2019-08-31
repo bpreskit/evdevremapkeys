@@ -1,0 +1,41 @@
+switch:
+  buttons:
+    A:
+      - BTN_EAST
+    B:
+      - BTN_SOUTH
+    X:
+      - BTN_NORTH
+    Y:
+      - BTN_C
+    PLUS:
+      - BTN_TR2
+    MINUS:
+      - BTN_TL2
+    HOME:
+      - BTN_MODE
+    SCREENSHOT:
+      - BTN_THUMBL
+    R_TRIG:
+      - BTN_TR
+    R_BUMP:
+      - BTN_Z
+    L_TRIG:
+      - BTN_TL
+    L_BUMP:
+      - BTN_WEST
+    L_STICK:
+      - ABS_Y
+      # Low = up, High = bottom
+      - ABS_X
+      # Low = left, High = right
+    L_PRESS:
+      - BTN_SELECT
+    R_STICK:
+      # Same parity as L_STICK
+      - ABS_RX
+      - ABS_RY
+    D_PAD:
+      # Same parity as sticks
+      - ABS_HAT0X
+      - ABS_HAT0Y

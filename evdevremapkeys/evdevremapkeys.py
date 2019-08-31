@@ -79,15 +79,25 @@ def repeat_event(event, rate, count, values, output):
             output.syn()
         yield from asyncio.sleep(rate)
 
+def event_value_match(event_value, remap_value):
+    return event_value == remap_value
 
-def remap_event(output, event, event_remapping):
+def remap_event(output, input_event, event_remapping):
     for remapping in event_remapping:
-        original_code = event.code
-        event.code = remapping['code']
-        event.type = remapping.get('type', None) or event.type
-        values = remapping.get('value', None) or [event.value]
+        if 'input_value' in remapping:
+            if not event_value_match(input_event.value, remapping['input_value']):
+                continue
+        original_code = input_event.code
+        original_type = input_event.type
+        output_type = remapping.get('type', None) or input_event.type
+        output_code = remapping['code']
+        values = remapping.get('value', None) or [input_event.value]
         repeat = remapping.get('repeat', False)
         delay = remapping.get('delay', False)
+
+        event = evdev.events.InputEvent(input_event.sec, input_event.usec,
+                                        output_type, output_code,
+                                        input_event.value)
         if not repeat and not delay:
             for value in values:
                 event.value = value
@@ -269,9 +279,7 @@ def register_device(device):
     remappings = device['remappings']
     extended = set(caps[ecodes.EV_KEY])
 
-    modifier_groups = []
-    if 'modifier_groups' in device:
-        modifier_groups = device['modifier_groups']
+    modifier_groups = device.get('modifier_groups', [])
 
     def flatmap(lst):
         return [l2 for l1 in lst for l2 in l1]
