@@ -5,11 +5,11 @@ devices:
     BTN_EAST:
       - KEY_A
     BTN_NORTH:
-      - KEY_B
+      - KEY_X
     BTN_C:
       - KEY_Y
     BTN_SOUTH:
-      - KEY_X
+      - KEY_B
     ABS_HAT0Y:
       - code: KEY_DOWN
         type: EV_KEY
@@ -44,3 +44,15 @@ devices:
         type: EV_KEY
         input_value: 0
         value: 0
+    BTN_TR2:
+      - KEY_HOME
+    BTN_TL2:
+      - KEY_END
+    BTN_TL:
+      - KEY_L
+    BTN_WEST:
+      - KEY_L
+    BTN_TR:
+      - KEY_R
+    BTN_Z:
+      - KEY_R

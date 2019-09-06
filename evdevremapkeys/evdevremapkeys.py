@@ -266,8 +266,11 @@ def find_input(device):
     return None
 
 
-def register_device(device):
-    input = find_input(device)
+def register_device(device, device_file):
+    if device_file:
+        input = InputDevice(device_file)
+    else:
+        input = find_input(device)
     if input is None:
         raise NameError("Can't find input device")
     input.grab()
@@ -310,7 +313,7 @@ def shutdown(loop):
 def run_loop(args):
     config = load_config(args.config_file)
     for device in config['devices']:
-        register_device(device)
+        register_device(device, args.device)
 
     loop = asyncio.get_event_loop()
     loop.add_signal_handler(signal.SIGTERM,
@@ -370,6 +373,7 @@ def main():
                         help='List input devices by name and physical address')
     parser.add_argument('-e', '--read-events', metavar='EVENT_ID',
                         help='Read events from an input device by either name, physical address or number.')
+    parser.add_argument('--device', help='File for the input device', default=None)
 
     args = parser.parse_args()
     if args.list_devices:
